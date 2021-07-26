@@ -20,7 +20,7 @@ class ClientesController extends Controller
      */
     public function index()
     {
-        return view('clientes.clientes_index', ["clientes" => Clientes::all()->take(20)]);
+        return view('clientes.adminClientes', ["clientes" => Clientes::all()->take(20)]);
     }
 
     /**
@@ -30,7 +30,7 @@ class ClientesController extends Controller
      */
     public function create()
     {
-        return view('clientes.clientes_create', ["documentos" => Documentos::all(), "estadosciviles" => Estadocivil::all(), "sexos" => Sexo::all()]);
+        return view('clientes.agregarClientes', ["documentos" => Documentos::all(), "estadosciviles" => Estadocivil::all(), "sexos" => Sexo::all()]);
     }
 
     /**
@@ -44,7 +44,6 @@ class ClientesController extends Controller
 
         $request["cliUsuario"] = Auth::user()->id;
 
-
         Clientes::create($request->all());
         return $this->index();
     }
@@ -57,7 +56,7 @@ class ClientesController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('clientes.eliminarClientes', ["cliente"=>Clientes::find($id)]);
     }
 
     /**
@@ -68,7 +67,7 @@ class ClientesController extends Controller
      */
     public function edit($id)
     {
-        return view('clientes.clientes_edit', ["cliente" => Clientes::find($id), "documentos" => Documentos::all(), "estadosciviles" => Estadocivil::all(), "sexos" => Sexo::all()]);
+        return view('clientes.modificarClientes', ["cliente" => Clientes::find($id), "documentos" => Documentos::all(), "estadosciviles" => Estadocivil::all(), "sexos" => Sexo::all()]);
     }
 
     /**

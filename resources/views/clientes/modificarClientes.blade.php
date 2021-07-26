@@ -10,7 +10,7 @@
             <div class="form-group col-md-4">
                 <label for="idCliente">Cliente</label>
                 <input type="text" name="idCliente" id="idCliente" class="form-control"
-                       placeholder="Número de CI, NIT u otro" value="{{ $cliente->idCliente }}" autofocus>
+                       placeholder="Número de CI, NIT u otro" value="{{ $cliente->idCliente }}" autofocus readonly>
 
             </div>
 

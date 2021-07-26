@@ -13,12 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::resource('clientes', 'App\Http\Controllers\ClientesController');
+Route::group(['middleware'=>'auth'], function (){
+    Route::get('/', function () {
+        return view('welcome');
+    });
+    Route::resource('clientes', 'App\Http\Controllers\ClientesController');
+});
+

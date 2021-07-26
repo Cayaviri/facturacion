@@ -20,13 +20,8 @@
                 <td>{{$cliente->idCliente}}</td>
                 <td>{{$cliente->cliNombre}}</td>
                 <td>
-
-                    <form action="{{ route('clientes.destroy', [$cliente])}}" method="POST">
-                        {{csrf_field()}}
-                        {{method_field('DELETE')}}
-                        <a href="{{route('clientes.edit', [$cliente])}}" class="btn btn-primary">Editar</a>
-                        <button type="submit" class="btn btn-danger">Borrar</button>
-                    </form>
+                    <a href="{{route('clientes.edit', [$cliente])}}" class="btn btn-primary">Editar</a>
+                    <a href="{{route('clientes.show', [$cliente])}}" class="btn btn-danger">Eliminar</a>
                 </td>
             </tr>
         @endforeach
