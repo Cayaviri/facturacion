@@ -9,9 +9,10 @@ class Clientes extends Model
 {
     use HasFactory;
 
-    protected $dateFormat='d-m-y H:i:s';
+    protected $dateFormat = 'd-m-y H:i:s';
 
-    protected $guarded=[];
+    protected $guarded = [];
 
     protected $primaryKey = 'idCliente';
+
 }

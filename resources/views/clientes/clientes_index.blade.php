@@ -1,26 +1,36 @@
-@extends('layout')
+@extends('layouts.plantilla')
 
-@section('content')
-    <a href="{{route('clientes.create')}}">Nuevo Cliente</a>
+@section('contenido')
 
-    <table>
+    <h1>Clientes</h1><br>
+
+    <a href="{{route('clientes.create')}}" class="btn btn-primary">Nuevo</a><br><br>
+
+    <table class="table table-striped table-hover">
+        <thead>
         <tr>
-            <td>Nombre</td>
-            <td>Acciones</td>
+            <th>CI/NIT</th>
+            <th>Nombre</th>
+            <th>Acciones</th>
         </tr>
+        </thead>
+        <tbody>
         @foreach($clientes as $cliente)
             <tr>
+                <td>{{$cliente->idCliente}}</td>
                 <td>{{$cliente->cliNombre}}</td>
                 <td>
-                    <a href="{{route('clientes.edit', [$cliente])}}">Editar</a>
-                    <form action="" method="POST">
+
+                    <form action="{{ route('clientes.destroy', [$cliente])}}" method="POST">
                         {{csrf_field()}}
                         {{method_field('DELETE')}}
-                        <button type="submit">Borrar</button>
+                        <a href="{{route('clientes.edit', [$cliente])}}" class="btn btn-primary">Editar</a>
+                        <button type="submit" class="btn btn-danger">Borrar</button>
                     </form>
                 </td>
             </tr>
         @endforeach
+        </tbody>
 
     </table>
 

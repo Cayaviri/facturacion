@@ -7,9 +7,12 @@ use App\Models\Documentos;
 use App\Models\Estadocivil;
 use App\Models\Sexo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ClientesController extends Controller
 {
+
+
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +20,7 @@ class ClientesController extends Controller
      */
     public function index()
     {
-        return view('clientes.clientes_index', ["clientes"=>Clientes::all()]);
+        return view('clientes.clientes_index', ["clientes" => Clientes::all()->take(20)]);
     }
 
     /**
@@ -38,6 +41,10 @@ class ClientesController extends Controller
      */
     public function store(Request $request)
     {
+
+        $request["cliUsuario"] = Auth::user()->id;
+
+
         Clientes::create($request->all());
         return $this->index();
     }
@@ -61,7 +68,7 @@ class ClientesController extends Controller
      */
     public function edit($id)
     {
-        return view('clientes.clientes_edit', ["clientes" => Clientes::find($id)]);
+        return view('clientes.clientes_edit', ["cliente" => Clientes::find($id), "documentos" => Documentos::all(), "estadosciviles" => Estadocivil::all(), "sexos" => Sexo::all()]);
     }
 
     /**
@@ -73,9 +80,14 @@ class ClientesController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        $request["cliUsuario"] = Auth::user()->id;
+
         $cliente = Clientes::find($id);
         $cliente->update($request->all());
         return $this->index();
+
+
     }
 
     /**

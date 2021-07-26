@@ -26,7 +26,7 @@ class CreateClientesTable extends Migration
             $table->string('cliOcupacion', 30);
             $table->string('cliEducacion', 30);
             $table->integer('cliDependientes');
-            $table->string('cliNota', 100);
+            $table->string('cliNota', 100)->nullable();
             $table->date('cliFecha');
             $table->string('cliUsuario', 15);
             $table->timestamps();

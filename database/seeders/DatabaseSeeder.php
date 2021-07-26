@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Documentos;
 use App\Models\Estadocivil;
 use App\Models\Sexo;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -18,6 +19,16 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
+
+        //table Users
+        $usuarios = [
+            ["admin", "admin@admin.com", "123"]
+        ];
+        foreach ($usuarios as $user){
+            User::create(["name"=>$user[0], "email"=>$user[1], "password"=>bcrypt($user[2])]);
+        }
+
+
         //tabla Documentos
         $documentos = [
             ["CID", "Cedula Identidad"],
@@ -37,7 +48,7 @@ class DatabaseSeeder extends Seeder
             ['V', 'Viudo']
         ];
         foreach ($estados_civiles as $estado_civil) {
-            Estadocivil::create(["idEstadocivil"=>$estado_civil[0], "estDescripcion"=>$estado_civil[1]]);
+            Estadocivil::create(["idEstadocivil" => $estado_civil[0], "estDescripcion" => $estado_civil[1]]);
         }
 
         //Tabla sexo
@@ -46,11 +57,9 @@ class DatabaseSeeder extends Seeder
             ["F", "Femenino"],
             ["X", "Sin datos"]
         ];
-        foreach ($sexos as $sexo){
-            Sexo::create(["idSexo"=>$sexo[0], "sexDescripcion"=>$sexo[1]]);
+        foreach ($sexos as $sexo) {
+            Sexo::create(["idSexo" => $sexo[0], "sexDescripcion" => $sexo[1]]);
         }
-
-
 
 
     }
