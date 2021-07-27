@@ -14,7 +14,7 @@ class CreateSuministrosTable extends Migration
     public function up()
     {
         Schema::create('suministros', function (Blueprint $table) {
-            $table->string('idSuministro')->primary();
+            $table->string('idSuministro', 2)->primary();
             $table->integer('idServicio')->unsigned();
             $table->string('sumDescripcion', 30);
             $table->timestamps();

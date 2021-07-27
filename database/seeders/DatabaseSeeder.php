@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Beneficiarios;
 use App\Models\Consumidores;
+use App\Models\Controles;
 use App\Models\Documentos;
 use App\Models\Estadocivil;
 use App\Models\Estados;
@@ -10,6 +12,7 @@ use App\Models\Liberaciones;
 use App\Models\Mediciones;
 use App\Models\Servicios;
 use App\Models\Sexo;
+use App\Models\Status;
 use App\Models\Suministros;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -132,6 +135,38 @@ class DatabaseSeeder extends Seeder
         ];
         foreach ($estados as $estado){
             Estados::create(["idEstado"=>$estado[0], "estDescripcion"=>$estado[1]]);
+        }
+
+        //Tabla beneficiarios
+        $beneficiarios = [
+            ["D", "Directo"],
+            ["I", "Indirecto"]
+        ];
+        foreach ($beneficiarios as $beneficiario){
+            Beneficiarios::create(["idBeneficiario"=>$beneficiario[0], "benDescripcion"=>$beneficiario[1]]);
+        }
+
+        //Tabla status
+        $status = [
+            ["V", "Vigentes"],
+            ["M", "Morosos"],
+            ["N", "No Corrientes"]
+        ];
+        foreach ($status as $stat){
+            Status::create(["idStatus"=>$stat[0], "staDescripcion"=>$stat[1]]);
+        }
+
+        //Tabla control
+        $controles = [
+            ["0", "Deuda"],
+            ["1", "Pagado"],
+            ["2", "Castigado"],
+            ["3", "Traspaso"],
+            ["4", "Sin Factura"],
+            ["5", "Anulado"],
+        ];
+        foreach ($controles as $control){
+            Controles::create(["idControl" => $control[0], "ctrDescripcion"=>$control[1]]);
         }
 
 

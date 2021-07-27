@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMedicionesTable extends Migration
+class CreateLey1886sTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateMedicionesTable extends Migration
      */
     public function up()
     {
-        Schema::create('mediciones', function (Blueprint $table) {
-            $table->string('idMedicion', 3)->primary();
-            $table->integer('idServicio')->unsigned();
-            $table->string('medDescripcion', 30);
+        Schema::create('ley1886s', function (Blueprint $table) {
+            $table->integerIncrements('idLey1886');
+            $table->date('idInicio');
+            $table->date('idCierre');
+            $table->integer('leyAbierto');
             $table->timestamps();
-            $table->foreign('idServicio')->references('idServicio')->on('servicios');
         });
     }
 
@@ -29,6 +29,6 @@ class CreateMedicionesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mediciones');
+        Schema::dropIfExists('ley1886s');
     }
 }

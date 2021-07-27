@@ -14,7 +14,7 @@ class CreateConsumidoresTable extends Migration
     public function up()
     {
         Schema::create('consumidores', function (Blueprint $table) {
-            $table->string('idConsumidor', 1);
+            $table->string('idConsumidor', 1)->primary();
             $table->integer('idServicio')->unsigned();
             $table->string('conDescripcion', 30);
             $table->timestamps();
