@@ -24,8 +24,7 @@ class CreateInscritoley1886sTable extends Migration
             $table->string('insUsuario', 15);
             $table->timestamps();
             $table->foreign('idLey1886')->references('idLey1886')->on('ley1886s');
-            $table->foreign('idAbonado')->references('idAbonado')->on('abonados');
-            $table->foreign('idServicio')->references('idServicio')->on('servicios');
+            $table->foreign('idAbonado', 'idServicio')->references('idAbonado', 'idServicio')->on('abonados');
             $table->foreign('idCliente')->references('idCliente')->on('clientes');
             $table->foreign('idBeneficiario')->references('idBeneficiario')->on('beneficiarios');
         });

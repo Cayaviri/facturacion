@@ -14,7 +14,7 @@ class CreateAbonadosTable extends Migration
     public function up()
     {
         Schema::create('abonados', function (Blueprint $table) {
-            $table->integerIncrements('idAbonado');
+            $table->integer('idAbonado')->autoIncrement();
             $table->integer('idServicio')->unsigned();
             $table->string('idCliente', 15);
             $table->string('idCategoria', 2);
@@ -42,6 +42,7 @@ class CreateAbonadosTable extends Migration
             $table->date('aboFecha');
             $table->string('aboUsuario', 15);
             $table->timestamps();
+            $table->primary('idAbonado', 'idServicio');
             $table->foreign('idServicio')->references('idServicio')->on('servicios');
             $table->foreign('idCliente')->references('idCliente')->on('clientes');
             $table->foreign('idCategoria')->references('idCategoria')->on('categorias');

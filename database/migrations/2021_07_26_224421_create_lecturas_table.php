@@ -29,8 +29,7 @@ class CreateLecturasTable extends Migration
             $table->date('lecFecha');
             $table->timestamps();
             $table->foreign('idPeriodo')->references('idPeriodo')->on('periodos');
-            $table->foreign('idAbonado')->references('idAbonado')->on('abonados');
-            $table->foreign('idServicio')->references('idServicio')->on('servicios');
+            //$table->foreign('idAbonado', 'idServicio')->references('idAbonado', 'idServicio')->on('abonados');
         });
     }
 
